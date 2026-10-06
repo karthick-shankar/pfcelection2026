@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PFC Elections 2026</title>
+    <meta name="description"
+        content="Navnirman - The transparent, resident-first governance architecture for Prestige Falcon City Apartments." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Outfit", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                    },
+                    colors: {
+                        brand: {
+                            50: "#fffbf0",
+                            100: "#fdf0d3",
+                            400: "#e5b94c",
+                            500: "#d4af37",
+                            600: "#b89223",
+                            700: "#997318",
+                            900: "#5c410a",
+                            950: "#332200",
+                        },
+                        trust: {
+                            800: "#1e1b2e",
+                            900: "#0f0d1a",
+                        },
+                    },
+                    backgroundImage: {
+                        "hero-pattern": "url('hero.png')",
+                        "community-pattern": "url('community.png')",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark-glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent,
+                    #d4af37,
+                    #d4af37,
+                    transparent);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 2rem;
+                transform: none;
+            }
+        }
+
+        .pillar-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hide scrollbar for mobile nav */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Flip Card Styles */
+        .flip-card {
+            perspective: 1500px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-trust-900 text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-trust-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-trust-900/90 backdrop-blur-md border-b border-brand-500/20 shadow-sm"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0, 0)">
+                    <span class="font-bold text-2xl tracking-tight text-brand-400">KARTHIK SHANKAR</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#pillars"
+                        class="nav-link text-slate-300 hover:text-brand-400 font-medium transition-colors">My Vision</a>
+                    <a href="visionaries.html"
+                        class="nav-link text-slate-300 hover:text-brand-400 font-medium transition-colors">Visionaries</a>
+                    <!--
+                    <a href="#roadmap"
+                        class="nav-link text-slate-300 hover:text-brand-400 font-medium transition-colors">100-Day
+                        Roadmap</a>
+                    -->
+                    <a href="#election"
+                        class="bg-brand-500 hover:bg-brand-400 text-trust-900 px-6 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Vote
+                        for Change</a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav Scroller -->
+        <div class="md:hidden border-t border-brand-500/20 bg-trust-900/95">
+            <div class="flex overflow-x-auto py-3 px-4 space-x-6 text-sm font-medium text-slate-300 no-scrollbar">
+                <a href="#legislature" class="shrink-0 hover:text-brand-400">Legislature</a>
+                <a href="#executive" class="shrink-0 hover:text-brand-400">Executive</a>
+                <a href="#judiciary" class="shrink-0 hover:text-brand-400">Judiciary</a>
+                <a href="visionaries.html" class="shrink-0 hover:text-brand-400">Visionaries</a>
+                <a href="#roadmap" class="shrink-0 hover:text-brand-400">Roadmap</a>
+                <a href="#election" class="shrink-0 text-brand-400 font-bold">Vote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-no-repeat"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-trust-900/90 via-trust-900/70 to-trust-900/40"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 py-20">
+            <div class="max-w-3xl" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/20 backdrop-blur-sm text-brand-400 font-semibold text-sm mb-6 uppercase tracking-wider">
+                    Prestige Falcon City
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-6">
+                    KARTHIK SHANKAR <br /><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-100">BALLOT NUMBER
+                        12</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-slate-300 font-light mb-8 max-w-2xl leading-relaxed">
+                    I'm not promising to run Prestige Falcon City for you. I'm
+                    promising to hand it back to you. Competence, transparency, and
+                    community first.
+                    Software developer · 8+ years across MNC, much of it in banking technology · Mechanical engineering,
+                    PES University; Executive MBA, IIM Calcutta
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <!--
+                    <a href="#roadmap"
+                        class="bg-brand-500 hover:bg-brand-400 text-trust-900 text-center font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] flex items-center justify-center gap-2">
+                        View Our 100-Day Roadmap <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    
+                    <a href="#pillars"
+                        class="dark-glass-panel hover:bg-trust-800 text-white text-center font-semibold py-4 px-8 rounded-full transition-all duration-300 flex items-center justify-center">
+                        Explore Governance
+                    </a>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Pillars Introduction -->
+    <section id="pillars" class="py-24 bg-trust-800 relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-900 opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-brand-900 opacity-20 blur-3xl">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-brand-400 uppercase tracking-widest mb-2">
+                    My vision
+                </h2>
+                <h3 class="text-4xl font-serif font-bold text-brand-50 mb-6">
+                    Five Pillars for Navnirman of PFC
+                </h3>
+                <p class="text-lg text-slate-300">
+                    A sustainable model that future Executive Committees can build upon
+                    with confidence, rooted in democratic principles and operational
+                    excellence.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+                <!-- Pillar 1 -->
+                <div id="legislature"
+                    class="pillar-card bg-trust-800 border border-brand-500/20 rounded-3xl p-8 relative overflow-hidden group lg:col-span-2"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i class="fa-solid fa-users text-8xl text-brand-50"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-50 mb-3">
+                        The Legislature
+                    </h4>
+                    <p class="text-brand-400 font-medium text-sm mb-4">
+                        The General Body
+                    </p>
+                    <p class="text-slate-300 mb-6 line-clamp">
+                        In a democracy, the legislature writes the laws and controls the
+                        budget. In PFC, the legislature is 2520 members of association. Lets work on:
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>PFCAOA Election policy</strong></span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>PFCAOA Governance 2.0 policy</strong></span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>PFCAOA Vendor Management 2.0 Policy</strong></span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>PFCAOA No Confidence Policy</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div id="executive"
+                    class="pillar-card bg-trust-800 border border-brand-500/20 rounded-3xl p-8 relative overflow-hidden group lg:col-span-2"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i class="fa-solid fa-briefcase text-8xl text-brand-50"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-50 mb-3">The Executive</h4>
+                    <p class="text-brand-400 font-medium text-sm mb-4">
+                        The Board & Management
+                    </p>
+                    <p class="text-slate-300 mb-6 line-clamp-3">
+                        Managing daily operations efficiently and fairly, executing the
+                        will of the people without bias. I want to:
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Audit:</strong> re-audit and resubmission of budget to general
+                                body.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Professional:</strong>standardize and publish EC report card at each
+                                AGM.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>SLA to Respond:</strong>define EC response times for all resident
+                                requests via official channels.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Bridge the Gap:</strong> Leverage tech, process, sub-committees and data to
+                                execute tasks efficiently, fairly and transparently. </span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Accountability:</strong> implement a way as such each SGBM agenda will be
+                                backed by atleast one EC
+                                member which will be printed on pre-read .</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div id="judiciary"
+                    class="pillar-card bg-trust-800 border border-brand-500/20 rounded-3xl p-8 relative overflow-hidden group lg:col-span-2"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i class="fa-solid fa-scale-balanced text-8xl text-brand-50"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-50 mb-3">The Judiciary</h4>
+                    <p class="text-brand-400 font-medium text-sm mb-4">
+                        Audits & Compliance
+                    </p>
+                    <p class="text-slate-300 mb-6 line-clamp-3">
+                        Ensuring accountability, resolving disputes fairly, and providing
+                        a check on those in power.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Judiciary:</strong> EC must immediately form Adhoc independent Judicial
+                                Committee triggered by atleast 10% member signatures or audit miscompliance.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Actionable:</strong> EC Disciplinary & Performance policies.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Grievances:</strong> create a robust grievance Redressal system.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div id="fourth-estate"
+                    class="pillar-card bg-trust-800 border border-brand-500/20 rounded-3xl p-8 relative overflow-hidden group lg:col-start-2 lg:col-span-2"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i class="fa-regular fa-newspaper text-8xl text-brand-50"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-regular fa-newspaper"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-50 mb-3">
+                        The Fourth Estate
+                    </h4>
+                    <p class="text-brand-400 font-medium text-sm mb-4">
+                        Radical Transparency
+                    </p>
+                    <p class="text-slate-300 mb-6 line-clamp-3">
+                        The public's right to access truthful information. A government’s
+                        obligation to operate in the light.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Right to Inspect and Right to Information:</strong> Association office is just
+                                a custodian of information. Leverage tech to provide
+                                seamless yet secured access to
+                                financial records/vendor contracts/AMC agreements etc.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Meaningful Openhouse:</strong> Bi-monthly openhouse connects where residents
+                                get access to EC members and discuss issues.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 5 -->
+                <div id="civil-society"
+                    class="pillar-card bg-trust-800 border border-brand-500/20 rounded-3xl p-8 relative overflow-hidden group lg:col-span-2"
+                    data-aos="fade-up" data-aos-delay="500">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+                        <i class="fa-solid fa-hands-holding-child text-8xl text-brand-50"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-6 shadow-sm">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-50 mb-3">Society</h4>
+                    <p class="text-brand-400 font-medium text-sm mb-4">
+                        Resident Committees
+                    </p>
+                    <p class="text-slate-300 mb-6 line-clamp-3">
+                        Create Resident Committees to engage residents in community
+                        initiatives to make the community vibrant and leadership grounded.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Empowerment:</strong> Setup recognized committees/groups for security, water,
+                                health
+                                gardens,
+                                ammenities, policy, events, tenants and so on. This leads to quicker feedback and faster
+                                execution.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                            <span><strong>Engagement:</strong> Every member has a voice. Open communication and surveys
+                                for feedback and inputs.</span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Footer -->
+    <footer id="election" class="bg-trust-900 text-white relative border-t-8 border-brand-500">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="bg-trust-800 border border-brand-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm text-center shadow-2xl mb-12"
+                data-aos="zoom-in">
+                <div
+                    class="inline-block bg-brand-500/20 text-brand-400 font-bold px-4 py-1.5 rounded-full text-sm mb-6 uppercase tracking-widest border border-brand-500/30">
+                    Important Date
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-serif font-bold mb-4">
+                    Your Vote Decides the next Executive Committee.
+                </h2>
+                <p class="text-2xl text-slate-300 font-light mb-8">
+                    PFCAOA Election Day:
+                    <span class="text-brand-50 font-bold bg-brand-500/30 px-2 py-1 rounded">8 October 2026</span>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mt-10">
+                    <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-file-invoice-dollar text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Clear Your Dues</h4>
+                        <p class="text-slate-400 text-sm">
+                            An owner with outstanding maintenance dues is legally not
+                            eligible to vote. Settle your dues before the AGM so your vote
+                            counts.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-black/30 p-6 rounded-2xl border border-white/5 relative group hover:border-brand-500/50 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-handshake-angle text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Assign a Proxy</h4>
+                        <p class="text-slate-400 text-sm mb-4">
+                            If you cannot attend, hand your proxy to a resident owner you
+                            trust (maximum two proxies per resident).
+                        </p>
+                        <a href="proxy.html"
+                            class="inline-flex items-center text-brand-400 text-sm font-bold uppercase tracking-wider group-hover:text-brand-300">
+                            Generate Form <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-address-card text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Verify Data</h4>
+                        <p class="text-slate-400 text-sm">
+                            Please work with PPMS to verify and update your owner master data to ensure a smooth voting
+                            process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 border-t border-white/10">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <span class="font-bold text-xl tracking-tight text-white">Kathik Shankar</span>
+                </div>
+                <p class="text-slate-400 text-sm uppercase tracking-widest">
+                    Ballot Number - 12
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation Script Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: "ease-out-cubic",
+        });
+
+        // Navbar blur on scroll
+        window.addEventListener("scroll", () => {
+            const nav = document.getElementById("navbar");
+            if (window.scrollY > 20) {
+                nav.classList.add("shadow-md");
+                nav.classList.remove("bg-trust-900/90");
+                nav.classList.add("bg-trust-900/98");
+            } else {
+                nav.classList.remove("shadow-md");
+                nav.classList.remove("bg-trust-900/98");
+                nav.classList.add("bg-trust-900/90");
+            }
+        });
+    </script>
+</body>
+
+</html>

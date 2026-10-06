@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navnirman | Visionaries</title>
+    <meta name="description" content="Meet the Navnirman candidates. Your neighbours. Not a panel of strangers." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Outfit", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                    },
+                    colors: {
+                        brand: {
+                            50: "#fffbf0",
+                            100: "#fdf0d3",
+                            400: "#e5b94c",
+                            500: "#d4af37",
+                            600: "#b89223",
+                            700: "#997318",
+                            900: "#5c410a",
+                            950: "#332200",
+                        },
+                        trust: {
+                            800: "#1e1b2e",
+                            900: "#0f0d1a",
+                        },
+                    },
+                    backgroundImage: {
+                        "hero-pattern": "url('hero.png')",
+                        "community-pattern": "url('community.png')",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Modal open state */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-trust-900 text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-trust-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-trust-900/90 backdrop-blur-md border-b border-brand-500/20 shadow-sm"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                    <span class="font-bold text-2xl tracking-tight text-brand-400">Kathik Shankar</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#pillars"
+                        class="nav-link text-slate-300 hover:text-brand-400 font-medium transition-colors">My vision</a>
+                    <a href="visionaries.html" class="text-brand-400 font-bold transition-colors">Visionaries</a>
+                    <!--
+                    <a href="index.html#roadmap"
+                        class="nav-link text-slate-300 hover:text-brand-400 font-medium transition-colors">100-Day
+                        Roadmap</a>
+                        
+                    -->
+                    <a href="index.html#election"
+                        class="bg-brand-500 hover:bg-brand-400 text-trust-900 px-6 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Vote
+                        for Change</a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav Scroller -->
+        <div class="md:hidden border-t border-brand-500/20 bg-trust-900/95">
+            <div class="flex overflow-x-auto py-3 px-4 space-x-6 text-sm font-medium text-slate-300 no-scrollbar">
+                <a href="index.html#legislature" class="shrink-0 hover:text-brand-400">Legislature</a>
+                <a href="index.html#executive" class="shrink-0 hover:text-brand-400">Executive</a>
+                <a href="index.html#judiciary" class="shrink-0 hover:text-brand-400">Judiciary</a>
+                <a href="visionaries.html" class="shrink-0 text-brand-400 font-bold">Visionaries</a>
+                <a href="index.html#roadmap" class="shrink-0 hover:text-brand-400">Roadmap</a>
+                <a href="index.html#election" class="shrink-0 hover:text-brand-400 font-bold">Vote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-32 pb-12 bg-trust-900 relative">
+        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-no-repeat opacity-10 mix-blend-overlay">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center" data-aos="fade-up">
+            <h2 class="text-sm font-bold text-brand-400 uppercase tracking-widest mb-2">The Candidates</h2>
+            <h1 class="text-5xl font-serif font-bold text-brand-50 mb-6">Your Neighbours. <br /><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-100">Not a panel of
+                    strangers.</span></h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
+                Lets thank all the selfless souls who have come forward to serve the community. There are 38 resident
+                who have stood for election this term out of which only 21 can be elected. lets get to know all of them
+                better.
+            </p>
+            <p class="text-xl text-slate-300 max-w-3xl mt-3 mx-auto font-light leading-relaxed">
+                you can select upto 21 candidates. This can help you with your voting decision and readiness on election
+                day. no data on this site is sent to any backend.
+            </p>
+        </div>
+    </section>
+
+    <!-- Visionaries Grid Section -->
+    <section class="py-12 bg-trust-800 relative min-h-screen pb-32">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="teamGrid"
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Cards injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="bioModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6"
+        onclick="if(event.target === this) closeModal()">
+        <div class="absolute inset-0 bg-trust-900/80 backdrop-blur-sm pointer-events-none"></div>
+
+        <div class="relative bg-trust-800 border border-brand-500/30 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto no-scrollbar flex flex-col pointer-events-auto transform transition-all scale-95 opacity-0 duration-300"
+            id="modalContent">
+            <!-- Header (Text Only) -->
+            <div class="relative p-6 sm:p-8 shrink-0 border-b border-brand-500/20 bg-trust-900/30">
+                <button onclick="closeModal()"
+                    class="absolute top-6 right-6 w-10 h-10 rounded-full bg-trust-800 border border-white/10 hover:bg-brand-500 text-white flex items-center justify-center transition-colors z-10 shadow-lg">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                <div class="pr-12">
+                    <h4 id="modalName" class="text-3xl sm:text-4xl font-bold text-brand-50 mb-1"></h4>
+                    <p id="modalTower" class="text-brand-400 font-medium text-lg"></p>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <p id="modalProfession"
+                    class="text-slate-200 font-semibold mb-6 pb-6 border-b border-brand-500/20 leading-relaxed"></p>
+
+                <div id="modalPdfs" class="flex flex-wrap gap-3 mb-6"></div>
+                <div class="mt-auto">
+                    <a id="modalLinkedin" href="#" target="_blank"
+                        class="hidden inline-flex items-center gap-3 px-6 py-3 rounded-full bg-trust-900 border border-brand-500/30 hover:bg-brand-500 text-slate-200 hover:text-trust-900 transition-all font-semibold shadow-lg">
+                        <i class="fa-brands fa-linkedin text-xl"></i> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action / Footer -->
+    <footer id="election" class="bg-trust-900 text-white relative border-t-8 border-brand-500">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+            <div class="bg-trust-800 border border-brand-500/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm text-center shadow-2xl mb-12"
+                data-aos="zoom-in">
+                <div
+                    class="inline-block bg-brand-500/20 text-brand-400 font-bold px-4 py-1.5 rounded-full text-sm mb-6 uppercase tracking-widest border border-brand-500/30">
+                    Important Date
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-serif font-bold mb-4">
+                    Your Vote Decides the next Executive Committee.
+                </h2>
+                <p class="text-2xl text-slate-300 font-light mb-8">
+                    PFCAOA Election Day:
+                    <span class="text-brand-50 font-bold bg-brand-500/30 px-2 py-1 rounded">8 October 2026</span>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mt-10">
+                    <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-file-invoice-dollar text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Clear Your Dues</h4>
+                        <p class="text-slate-400 text-sm">
+                            An owner with outstanding maintenance dues is legally not
+                            eligible to vote. Settle your dues before the AGM so your vote
+                            counts.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-black/30 p-6 rounded-2xl border border-white/5 relative group hover:border-brand-500/50 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-handshake-angle text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Assign a Proxy</h4>
+                        <p class="text-slate-400 text-sm mb-4">
+                            If you cannot attend, hand your proxy to a resident owner you
+                            trust (maximum two proxies per resident).
+                        </p>
+                        <a href="proxy.html"
+                            class="inline-flex items-center text-brand-400 text-sm font-bold uppercase tracking-wider group-hover:text-brand-300">
+                            Generate Form <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-black/30 p-6 rounded-2xl border border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-address-card text-brand-400"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Verify Data</h4>
+                        <p class="text-slate-400 text-sm">
+                            Please work with PPMS to verify and update your owner master data to ensure a smooth voting
+                            process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 border-t border-white/10">
+                <span class="font-bold text-xl tracking-tight text-white">Kathik Shankar</span>
+                <p class="text-slate-400 text-sm uppercase tracking-widest">
+                    Ballot Number - 12
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Selection Bar -->
+    <div id="selectionBar"
+        class="fixed bottom-0 left-0 right-0 bg-brand-500 text-trust-900 shadow-[0_-5px_15px_rgba(0,0,0,0.3)] z-40 transform transition-transform duration-300 translate-y-full">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div
+                    class="bg-trust-900 text-brand-400 font-bold px-4 py-2 rounded-xl border border-trust-800 shadow-inner">
+                    <span id="selectedCount">0</span> / 21 Selected
+                </div>
+                <p class="font-medium text-sm sm:text-base hidden sm:block">Select up to 21 candidates. Your choices are
+                    saved securely on this device until Oct 9th.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleSelectedFilter()" id="filterBtn"
+                    class="bg-trust-800 hover:bg-trust-900 text-white px-5 py-2 rounded-xl font-semibold transition-colors text-sm">
+                    <i class="fa-solid fa-filter mr-2"></i>Review Selected
+                </button>
+                <button onclick="clearSelection()"
+                    class="bg-red-500/20 hover:bg-red-500/30 text-red-900 border border-red-900/30 px-4 py-2 rounded-xl font-semibold transition-colors text-sm">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // The Team Data Array
+        const TEAM = [
+            {
+                "ballot": 1,
+                "name": "Mr. Amar Kukke",
+                "tower": "Flat No. 21011",
+                "assets": [
+                    "visionaries/candidate_1_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 2,
+                "name": "Mr. Anoop Srinivas Gannerkote",
+                "tower": "Flat No. 52151",
+                "assets": [
+                    "visionaries/candidate_2_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 3,
+                "name": "Mrs. Anusha Srihari",
+                "tower": "Flat No. 22234",
+                "assets": [
+                    "visionaries/candidate_3_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 4,
+                "name": "Mr. Ashish Khoria",
+                "tower": "Flat No. 31292",
+                "assets": []
+            },
+            {
+                "ballot": 5,
+                "name": "Mr. Atiqur Rahman Shareef",
+                "tower": "Flat No. 32023",
+                "assets": [
+                    "visionaries/candidate_5_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 6,
+                "name": "Mr. Basavaraj Dindur",
+                "tower": "Flat No. 14194",
+                "assets": [
+                    "visionaries/candidate_6_part1.jpeg",
+                    "visionaries/candidate_6_part2.pdf"
+                ]
+            },
+            {
+                "ballot": 7,
+                "name": "Mr. Bhalaji P Raghavan",
+                "tower": "Flat No. 43021",
+                "assets": [
+                    "visionaries/candidate_7_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 8,
+                "name": "Mr. Dinesh Nataraj",
+                "tower": "Flat No. 53304",
+                "assets": ["visionaries/candidate_8_part1.jpeg"]
+            },
+            {
+                "ballot": 9,
+                "name": "Mr. Hans Udeshi",
+                "tower": "Flat No. 54032",
+                "assets": [
+                    "visionaries/candidate_9_part1.jpeg",
+                    "visionaries/candidate_9_part2.jpeg"
+                ]
+            },
+            {
+                "ballot": 10,
+                "name": "Mr. Jatin Prakash Sultania",
+                "tower": "Flat No. 11174",
+                "assets": [
+                    "visionaries/candidate_10_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 11,
+                "name": "Mr. Jayanth Ramesh Bhoopalam",
+                "tower": "Flat No. 11254",
+                "assets": [
+                    "visionaries/candidate_11_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 12,
+                "name": "Mr. Karthik Shankar",
+                "tower": "Flat No. 13242",
+                "assets": [
+                    "visionaries/candidate_12_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 13,
+                "name": "Mr. Krishna Ananta Murthy",
+                "tower": "Flat No. 33162",
+                "assets": [
+                    "visionaries/candidate_13_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 14,
+                "name": "Mr. Krishtipati Jayakumar",
+                "tower": "Flat No. 23091",
+                "assets": [
+                    "visionaries/candidate_14_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 15,
+                "name": "Mr. Lakshmana Prabhu",
+                "tower": "Flat No. 24052",
+                "assets": [
+                    "visionaries/candidate_15_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 16,
+                "name": "Mr. Manjunath G",
+                "tower": "Flat No. 11042",
+                "assets": [
+                    "visionaries/candidate_16_part1.jpeg",
+                    "visionaries/candidate_16_part2.pdf"
+                ]
+            },
+            {
+                "ballot": 17,
+                "name": "Mr. Manoj Kumar Shetty",
+                "tower": "Flat No. 52062",
+                "assets": []
+            },
+            {
+                "ballot": 18,
+                "name": "Mrs. Misuni Mankodi",
+                "tower": "Flat No. 23012",
+                "assets": [
+                    "visionaries/candidate_18_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 19,
+                "name": "Mr. Mohan CR",
+                "tower": "Flat No. 11292",
+                "assets": ["visionaries/candidate_19_part1.jpeg"]
+            },
+            {
+                "ballot": 20,
+                "name": "Mrs. Nilambari B",
+                "tower": "Flat No. 52124",
+                "assets": [
+                    "visionaries/candidate_20_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 21,
+                "name": "Mr. Nuthan Kumar N R",
+                "tower": "Flat No. 13211",
+                "assets": [
+                    "visionaries/candidate_21_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 22,
+                "name": "Mr. Rajeshwar Swarup Saharia",
+                "tower": "Flat No. 23131",
+                "assets": [
+                    "visionaries/candidate_22_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 23,
+                "name": "Mr. Ramakrishna T G",
+                "tower": "Flat No. 52032",
+                "assets": [
+                    "visionaries/candidate_23_part1.pdf",
+                    "visionaries/candidate_23_part2.jpeg"
+                ]
+            },
+            {
+                "ballot": 24,
+                "name": "Mr. Ramesh P",
+                "tower": "Flat No. 53261",
+                "assets": [
+                    "visionaries/candidate_24_part1.jpeg",
+                    "visionaries/candidate_24_part2.jpeg"
+                ]
+            },
+            {
+                "ballot": 25,
+                "name": "Mrs. Reshma Prakash Ajila",
+                "tower": "Flat No. 42273",
+                "assets": [
+                    "visionaries/candidate_25_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 26,
+                "name": "Mrs. Rupa Sridhar",
+                "tower": "Flat No. 54272",
+                "assets": [
+                    "visionaries/candidate_26_part1.jpeg"
+                ]
+            },
+            {
+                "ballot": 27,
+                "name": "Mr. Shaswath Korishetter",
+                "tower": "Flat No. 12182",
+                "assets": []
+            },
+            {
+                "ballot": 28,
+                "name": "Ms. Sonia Sehgal",
+                "tower": "Flat No. 13214",
+                "assets": [
+                    "visionaries/candidate_28_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 29,
+                "name": "Mr. Srinivas Murthy S V",
+                "tower": "Flat No. 12131",
+                "assets": []
+            },
+            {
+                "ballot": 30,
+                "name": "Mr. Sudarshan S Mantri",
+                "tower": "Flat No. 23011",
+                "assets": [
+                    "visionaries/candidate_30_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 31,
+                "name": "Mr. Suket Niranjan Gandhi",
+                "tower": "Flat No. 53191",
+                "assets": [
+                    "visionaries/candidate_31_part1.jpeg",
+                    "visionaries/candidate_31_part2.jpeg",
+                    "visionaries/candidate_31_part3.jpeg"
+                ]
+            },
+            {
+                "ballot": 32,
+                "name": "Mr. Sunil Kumar Panda",
+                "tower": "Flat No. 43181",
+                "assets": []
+            },
+            {
+                "ballot": 33,
+                "name": "Mr. Surya Satyanarayana N V V",
+                "tower": "Flat No. 13173",
+                "assets": [
+                    "visionaries/candidate_33_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 34,
+                "name": "Mr. Vasudeva Murthy C K",
+                "tower": "Flat No. 43111",
+                "assets": []
+            },
+            {
+                "ballot": 35,
+                "name": "Mr. Venkatesh HM",
+                "tower": "Flat No. 34283",
+                "assets": [
+                    "visionaries/candidate_35_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 36,
+                "name": "Mr. Venkatesh N",
+                "tower": "Flat No. 53083",
+                "assets": [
+                    "visionaries/candidate_36_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 37,
+                "name": "Mr. Venu Gopal Subbarao",
+                "tower": "Flat No. 53153",
+                "assets": [
+                    "visionaries/candidate_37_part1.pdf"
+                ]
+            },
+            {
+                "ballot": 38,
+                "name": "Mr. Vishal Mehra",
+                "tower": "Flat No. 14151",
+                "assets": [
+                    "visionaries/candidate_38_part1.jpeg"
+                ]
+            }
+        ];
+
+        // Render Cards
+
+        // Selection Logic
+        const MAX_SELECTIONS = 21;
+        const EXPIRY_DATE = new Date('2026-10-09T23:59:59');
+        let selectedCandidates = new Set();
+        let showingOnlySelected = false;
+
+        function initSelection() {
+            // Check expiry
+            if (new Date() > EXPIRY_DATE) {
+                localStorage.removeItem('pfcaoa_selections');
+            }
+
+            const stored = localStorage.getItem('pfcaoa_selections');
+            if (stored) {
+                try {
+                    selectedCandidates = new Set(JSON.parse(stored));
+                } catch (e) {
+                    selectedCandidates = new Set();
+                }
+            }
+            updateSelectionUI();
+        }
+
+        function saveSelection() {
+            localStorage.setItem('pfcaoa_selections', JSON.stringify([...selectedCandidates]));
+        }
+
+        function toggleSelection(index, cardElement) {
+            if (selectedCandidates.has(index)) {
+                selectedCandidates.delete(index);
+            } else {
+                if (selectedCandidates.size >= MAX_SELECTIONS) {
+                    alert('You can only select up to ' + MAX_SELECTIONS + ' candidates.');
+                    return;
+                }
+                selectedCandidates.add(index);
+            }
+            saveSelection();
+            updateCardStyle(index, cardElement);
+            updateSelectionUI();
+        }
+
+        function updateCardStyle(index, cardElement) {
+            const indicator = cardElement.querySelector('.selection-indicator');
+            const icon = indicator.querySelector('.fa-check');
+
+            if (selectedCandidates.has(index)) {
+                cardElement.classList.add('ring-2', 'ring-brand-500', 'bg-brand-500/10');
+                indicator.classList.remove('border-brand-500/30');
+                indicator.classList.add('bg-brand-500', 'border-brand-500');
+                icon.classList.remove('opacity-0');
+            } else {
+                cardElement.classList.remove('ring-2', 'ring-brand-500', 'bg-brand-500/10');
+                indicator.classList.add('border-brand-500/30');
+                indicator.classList.remove('bg-brand-500', 'border-brand-500');
+                icon.classList.add('opacity-0');
+            }
+        }
+
+        function updateSelectionUI() {
+            const count = selectedCandidates.size;
+            document.getElementById('selectedCount').textContent = count;
+
+            const bar = document.getElementById('selectionBar');
+            if (count > 0 || showingOnlySelected) {
+                bar.classList.remove('translate-y-full');
+            } else {
+                bar.classList.add('translate-y-full');
+            }
+
+            // Update all cards if grid is rendered
+            const gridCards = document.getElementById('teamGrid').children;
+            for (let i = 0; i < gridCards.length; i++) {
+                updateCardStyle(i, gridCards[i]);
+
+                // Handle filtering
+                if (showingOnlySelected && !selectedCandidates.has(i)) {
+                    gridCards[i].style.display = 'none';
+                } else {
+                    gridCards[i].style.display = 'block';
+                }
+            }
+        }
+
+        function clearSelection() {
+            if (confirm('Are you sure you want to clear your selections?')) {
+                selectedCandidates.clear();
+                saveSelection();
+                showingOnlySelected = false;
+                document.getElementById('filterBtn').innerHTML = '<i class="fa-solid fa-filter mr-2"></i>Review Selected';
+                document.getElementById('filterBtn').classList.remove('bg-white', 'text-trust-900');
+                updateSelectionUI();
+            }
+        }
+
+        function toggleSelectedFilter() {
+            showingOnlySelected = !showingOnlySelected;
+            const btn = document.getElementById('filterBtn');
+            if (showingOnlySelected) {
+                btn.innerHTML = '<i class="fa-solid fa-table-cells mr-2"></i>Show All';
+                btn.classList.add('bg-white', 'text-trust-900');
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-filter mr-2"></i>Review Selected';
+                btn.classList.remove('bg-white', 'text-trust-900');
+            }
+            updateSelectionUI();
+        }
+
+        // Initialize selection when script runs
+        initSelection();
+
+        const grid = document.getElementById('teamGrid');
+
+        TEAM.forEach((candidate, index) => {
+            const card = document.createElement('div');
+            // aspect ratio 4/5, hover effects, cursor pointer
+            card.className = "group relative w-full rounded-2xl overflow-hidden shadow-md shadow-brand-500/5 border border-brand-500/20 cursor-pointer bg-trust-900 hover:bg-trust-800 transition-colors py-2";
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index * 50).toString());
+            // Add initial avatar fallback if no photo
+            const initials = candidate.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+
+            card.innerHTML = `
+                <div class="p-5 flex flex-col justify-center h-full text-center relative pointer-events-none">
+                    <div class="selection-indicator absolute top-3 left-3 w-6 h-6 rounded-full border-2 border-brand-500/30 flex items-center justify-center transition-all">
+                        <i class="fa-solid fa-check text-xs opacity-0 text-brand-900"></i>
+                    </div>
+                    <button class="absolute top-3 right-3 text-brand-400/50 hover:text-brand-400 transition-colors pointer-events-auto" onclick="event.stopPropagation(); openModal(${index})">
+                        <i class="fa-solid fa-circle-info text-xl"></i>
+                    </button>
+                    <span class="inline-block bg-brand-500/20 text-brand-400 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-widest border border-brand-500/30 mb-3 mx-auto mt-2">
+                        Ballot No. ${candidate.ballot}
+                    </span>
+                    <h4 class="text-xl font-bold text-brand-50 leading-tight mb-2">${candidate.name}</h4>
+                    <p class="text-slate-400 font-medium text-sm">${candidate.tower}</p>
+                </div>
+            `;
+            // Add click listener for selection
+            card.onclick = () => toggleSelection(index, card);
+            grid.appendChild(card);
+        });
+        updateSelectionUI();
+
+        // Modal Logic
+        const modal = document.getElementById('bioModal');
+        const modalContent = document.getElementById('modalContent');
+        const body = document.body;
+
+        function openModal(index) {
+            const candidate = TEAM[index];
+
+
+            document.getElementById('modalName').textContent = candidate.name;
+            document.getElementById('modalTower').textContent = 'Ballot No. ' + candidate.ballot;
+
+            const professionEl = document.getElementById('modalProfession');
+            professionEl.style.display = 'none';
+
+            const pdfsContainer = document.getElementById('modalPdfs');
+            if (pdfsContainer) {
+                pdfsContainer.innerHTML = '';
+                if (candidate.assets && candidate.assets.length > 0) {
+                    candidate.assets.forEach(asset => {
+                        if (asset.toLowerCase().endsWith('.pdf')) {
+                            const iframe = document.createElement('iframe');
+                            iframe.src = asset + "#toolbar=0&navpanes=0&view=FitH";
+                            iframe.className = "w-full h-[600px] rounded-xl border border-white/10 mb-4";
+                            pdfsContainer.appendChild(iframe);
+                        } else {
+                            const img = document.createElement('img');
+                            img.src = asset;
+                            img.className = "w-full rounded-xl border border-white/10 mb-4 object-contain";
+                            pdfsContainer.appendChild(img);
+                        }
+                    });
+                } else {
+                    pdfsContainer.innerHTML = '<p class="text-slate-400 italic">No profile document available for this candidate.</p>';
+                }
+            }
+            // Show modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            body.classList.add('modal-open');
+
+            // Trigger animation
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // Animate out
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                body.classList.remove('modal-open');
+            }, 300); // Wait for transition
+        }
+
+        // Listen for ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Initialize AOS after cards are rendered
+        AOS.init({ once: true, offset: 50, duration: 800 });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assign Proxy - Navnirman</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PDF-Lib CDN -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: { 50: '#fbf9f1', 100: '#f6f1df', 400: '#d4af37', 500: '#c5a028', 900: '#4a3b0b' },
+                        trust: { 800: '#1a1d24', 900: '#111318' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-trust-900 text-slate-200 font-sans antialiased overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-trust-900/90 backdrop-blur-md border-b border-brand-500/20 shadow-sm"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                    <span class="font-bold text-2xl tracking-tight text-brand-400">Kathik Shankar</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#pillars"
+                        class="text-slate-300 hover:text-brand-400 font-medium transition-colors">Governance Pillars</a>
+                    <a href="visionaries.html"
+                        class="text-slate-300 hover:text-brand-400 font-medium transition-colors">Visionaries</a>
+                    <!--
+                    <a href="index.html#roadmap"
+                        class="text-slate-300 hover:text-brand-400 font-medium transition-colors">100-Day Roadmap</a>
+                    -->
+                    <a href="index.html#election"
+                        class="bg-brand-500 hover:bg-brand-400 text-trust-900 px-6 py-2 rounded-full font-medium transition-all shadow-md">Vote
+                        for Change</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="pt-32 pb-20 relative min-h-screen">
+        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-no-repeat opacity-10 mix-blend-overlay">
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h1 class="text-5xl font-serif font-bold text-brand-50 mb-4">Assign a Proxy</h1>
+                <h3 class="text-xl text-slate-300 font-light">We thank each and everyone of you for your support during
+                    the recent historic
+                    petition and SGBM drive.</h3>
+                <p class="text-s text-slate-300 font-light">it came to our attention that many apartment couldn't
+                    register their opinion during the SGBM due to unavailabilty of "member of association", for various
+                    reason. </p>
+                <p class="text-s text-slate-300 font-light">we have created this proxy generator so every owner,
+                    co-owner and tenant can register their opinion. </p>
+                <p class="text-s text-slate-300 font-light">Rest assured, no information on this page ever leaves your
+                    system/phone/tab and is processed entirely locally. </p>
+            </div>
+
+            <form id="proxyForm" class="bg-trust-800 border border-brand-500/20 rounded-3xl p-8 sm:p-12 shadow-2xl">
+                <p class="flex gap-3 mb-6">
+                    <span
+                        class="text-white font-bold bg-yellow-500/10 px-3 py-2 rounded-lg border border-yellow-500/30 leading-snug">
+                        <i class="fa-solid fa-triangle-exclamation text-yellow-500 px-3 mt-1"></i>Absolute Deadline:
+                        Proxy forms will NOT be accepted under any circumstances if submitted after 8th Oct 2026, 2:00
+                        PM.</span>
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-brand-400 border-b border-brand-500/20 pb-2">Owner Details
+                        </h3>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Owner Name</label>
+                            <input type="text" id="ownerName" required
+                                class="w-full bg-trust-900 border border-brand-500/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-600"
+                                placeholder="type the name of the owner">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Owner Apartment No.</label>
+                            <input type="text" id="ownerApt" required
+                                class="w-full bg-trust-900 border border-brand-500/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-600"
+                                placeholder="type the apartment number of the owner">
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-brand-400 border-b border-brand-500/20 pb-2">Proxy Details
+                        </h3>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Proxy Name</label>
+                            <input type="text" id="proxyName" required
+                                class="w-full bg-trust-900 border border-brand-500/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-600"
+                                placeholder="type the name of the proxy">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Proxy Apartment No.</label>
+                            <input type="text" id="proxyApt" required
+                                class="w-full bg-trust-900 border border-brand-500/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 transition-colors placeholder-slate-600"
+                                placeholder="type the apartment number of the proxy">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div
+                    class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 border-t border-brand-500/20">
+                    <button type="button" onclick="triggerDownloadEmpty()"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full border border-brand-500/30 hover:bg-brand-500/10 text-brand-400 font-bold transition-colors text-center">
+                        <i class="fa-solid fa-file-pdf mr-2"></i> Download Empty Form
+                    </button>
+                    <button type="submit"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-400 text-trust-900 font-bold shadow-lg transition-colors flex items-center justify-center">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Filled PDF
+                    </button>
+                </div>
+
+                <!-- Rules Section -->
+                <div class="pt-8 mt-4 border-t border-brand-500/20">
+                    <h3 class="text-xl font-bold text-white mb-2"><i
+                            class="fa-solid fa-scale-balanced text-brand-400 mr-2"></i> Important Rules for Proxies</h3>
+                    <p class="text-xs text-brand-400 mb-6 font-bold uppercase tracking-wider">As per Byelaws (Ch. III,
+                        Sec. 1.c)</p>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-caret-right text-brand-500 mt-0.5"></i>
+                            <span>A Member entitled to vote can do so in person or through a proxy.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-caret-right text-brand-500 mt-0.5"></i>
+                            <span>A proxy must be a resident of the development.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-caret-right text-brand-500 mt-0.5"></i>
+                            <span>The proxy form (Annexure-1) must be submitted as a signed hard copy (signed by the
+                                person whose name appears first in the Sale Deed) by a resident owner, at least one hour
+                                before the start of the General Body Meeting/Election.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-caret-right text-brand-500 mt-0.5"></i>
+                            <span>One resident may not carry more than two proxies for voting purposes.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i class="fa-solid fa-caret-right text-brand-500 mt-0.5"></i>
+                            <span>A proxy who is not a Member shall not be entitled to speak at the meeting.</span>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Attention Modal -->
+    <div id="attentionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeAttentionModal()"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="bg-trust-900 border border-brand-500/30 rounded-3xl w-full max-w-2xl relative z-10 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Header -->
+            <div class="bg-trust-800 p-6 border-b border-brand-500/20 flex justify-between items-center">
+                <h2 class="text-xl sm:text-2xl font-bold text-brand-400 flex items-center gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-yellow-500"></i>
+                    Important: Complete Your Proxy Form
+                </h2>
+                <button type="button" onclick="closeAttentionModal()"
+                    class="text-slate-400 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div id="modalScrollBody" class="p-6 overflow-y-auto space-y-6 text-sm text-slate-300">
+                <div id="signatureWarning"
+                    class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 text-yellow-200 hidden">
+                    <p class="font-bold mb-1 text-base"><i class="fa-solid fa-pen-nib mr-2"></i> Form is Incomplete
+                        Without Signature!</p>
+                    <p>The downloaded form will be pre-filled with your details, but <strong>you must sign it</strong>
+                        before submission. You can physically print and sign the form, or you can e-sign it digitally
+                        via <a href="https://www.digilocker.gov.in/" target="_blank"
+                            class="text-brand-400 underline hover:text-brand-300 font-medium">Digilocker</a>.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-3">Note to Proxy Holders</h3>
+                    <p class="mb-3 font-medium">As per the Byelaws Chapter III, Clause 1.c:</p>
+                    <ul class="list-decimal pl-5 space-y-3">
+                        <li>The proxy must be a current resident of the Prestige Falcon City Development.</li>
+                        <li>This form must be submitted as follows:
+                            <ul class="list-[lower-alpha] pl-5 mt-2 space-y-2">
+                                <li>A signed hard copy (signed by the person whose name appears first in the Sale Deed)
+                                    must be submitted by a resident owner to the Estate Manager at the AOA office, at
+                                    least one hour before the start of the General Body Meeting/Election.<br><strong
+                                        class="block mt-1 text-white">OR</strong></li>
+                                <li>A scanned copy of the signed proxy form must be emailed by the Member from their
+                                    registered email address to: <strong class="text-white">office@pfcaoa.com</strong>
+                                    at least one hour before the start of the General Body Meeting / Elections.</li>
+                            </ul>
+                        </li>
+                        <li>Unsigned proxy forms or those sent from unregistered contact details will not be accepted.
+                        </li>
+                        <li class="leading-relaxed"><strong
+                                class="text-white bg-yellow-500/20 px-2 py-1 rounded border border-yellow-500/30">Absolute
+                                Deadline:</strong> Proxy forms will NOT be accepted under any circumstances if submitted
+                            after <strong class="text-white">8th Oct 2026, 2:00 PM</strong>.</li>
+                        <li>A resident may carry a maximum of two proxies.</li>
+                        <li>A proxy who is not a Member is not entitled to speak at the meeting.</li>
+                        <li>The Estate Manager will maintain a verified proxy register, and proxy ballots will only be
+                            issued to those listed in this authenticated proxy list.</li>
+                        <li>Proxy forms signed by CAM defaulters / those with membership fee dues will not be
+                            considered.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator Overlay -->
+            <div id="scrollIndicator"
+                class="absolute bottom-[92px] left-0 right-0 flex justify-center pointer-events-none transition-opacity duration-300">
+                <div
+                    class="bg-brand-500 text-trust-900 px-4 py-2 rounded-full font-bold text-xs shadow-xl animate-bounce flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-down"></i> Scroll to read all rules
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="bg-trust-800 p-6 border-t border-brand-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p id="scrollMsg" class="text-xs text-brand-400 font-medium">Please scroll to the bottom to proceed.</p>
+                <button id="proceedDownloadBtn" type="button" disabled
+                    class="w-full sm:w-auto px-8 py-3 rounded-full bg-slate-700 text-slate-500 cursor-not-allowed font-bold transition-all duration-300">
+                    I Understand, Proceed to Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-trust-900 text-white border-t border-white/10">
+        <div class="text-center py-8">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="font-bold text-xl text-white">Kathik Shankar</span>
+            </div>
+            <p class="text-slate-400 text-sm uppercase tracking-widest">Ballot Number - 12</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentDownloadMode = 'generated';
+
+        function triggerDownloadEmpty() {
+            currentDownloadMode = 'empty';
+            showAttentionModal(false);
+        }
+
+        document.getElementById('proxyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            currentDownloadMode = 'generated';
+            showAttentionModal(true);
+        });
+
+        const modalScrollBody = document.getElementById('modalScrollBody');
+        const proceedDownloadBtn = document.getElementById('proceedDownloadBtn');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const scrollMsg = document.getElementById('scrollMsg');
+
+        function checkScroll() {
+            // Add 10px leeway for mobile rounding
+            if (modalScrollBody.scrollTop + modalScrollBody.clientHeight >= modalScrollBody.scrollHeight - 10) {
+                proceedDownloadBtn.disabled = false;
+                proceedDownloadBtn.className = "w-full sm:w-auto px-8 py-3 rounded-full bg-brand-500 hover:bg-brand-400 text-trust-900 font-bold shadow-lg transition-all duration-300";
+                scrollIndicator.style.opacity = '0';
+                scrollMsg.classList.add('hidden');
+            }
+        }
+
+        modalScrollBody.addEventListener('scroll', checkScroll);
+
+        function showAttentionModal(isGenerated) {
+            document.getElementById('attentionModal').classList.remove('hidden');
+            modalScrollBody.scrollTop = 0;
+
+            // Reset to disabled state
+            proceedDownloadBtn.disabled = true;
+            proceedDownloadBtn.className = "w-full sm:w-auto px-8 py-3 rounded-full bg-slate-700 text-slate-500 cursor-not-allowed font-bold transition-all duration-300";
+            scrollIndicator.style.opacity = '1';
+            scrollMsg.classList.remove('hidden');
+
+            if (isGenerated) {
+                document.getElementById('signatureWarning').classList.remove('hidden');
+            } else {
+                document.getElementById('signatureWarning').classList.add('hidden');
+            }
+
+            // Immediately check if the screen is large enough that no scroll is needed
+            setTimeout(checkScroll, 100);
+        }
+
+        function closeAttentionModal() {
+            document.getElementById('attentionModal').classList.add('hidden');
+        }
+
+        document.getElementById('proceedDownloadBtn').addEventListener('click', async (e) => {
+            closeAttentionModal();
+
+            if (currentDownloadMode === 'empty') {
+                const link = document.createElement('a');
+                link.href = 'proxy.pdf';
+                link.download = 'proxy.pdf';
+                link.click();
+                return;
+            }
+
+            // Proceed with generation
+            const ownerName = document.getElementById('ownerName').value;
+            const ownerApt = document.getElementById('ownerApt').value;
+            const proxyName = document.getElementById('proxyName').value;
+            const proxyApt = document.getElementById('proxyApt').value;
+
+            // Generate System Date
+            const date = new Date();
+            const signedDate = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase().replace(/ /g, '/');
+            const electionDate = "08/OCT/2026";
+
+            // Hardcoded precise coordinates
+            const coords = {
+                ownerName: { x: 63, y: 603 },
+                ownerApt: { x: 117, y: 570 },
+                proxyName: { x: 306, y: 570 },
+                proxyApt: { x: 217, y: 553 },
+                signedDate: { x: 99, y: 486 },
+                electionDate: { x: 180, y: 522 },
+            };
+
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Generating...';
+            submitBtn.disabled = true;
+
+            try {
+                // Fetch the existing PDF
+                const existingPdfBytes = await fetch('proxy.pdf').then(res => res.arrayBuffer());
+
+                // Load PDF
+                const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+                const pages = pdfDoc.getPages();
+                const firstPage = pages[0];
+
+                // Embed Font
+                const font = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+                const size = 12;
+                const color = PDFLib.rgb(0, 0, 0);
+
+                // Draw Text
+                firstPage.drawText(ownerName, { x: coords.ownerName.x, y: coords.ownerName.y, size, font, color });
+                firstPage.drawText(ownerApt, { x: coords.ownerApt.x, y: coords.ownerApt.y, size, font, color });
+                firstPage.drawText(proxyName, { x: coords.proxyName.x, y: coords.proxyName.y, size, font, color });
+                firstPage.drawText(proxyApt, { x: coords.proxyApt.x, y: coords.proxyApt.y, size, font, color });
+                firstPage.drawText(signedDate, { x: coords.signedDate.x, y: coords.signedDate.y, size, font, color });
+                firstPage.drawText(electionDate, { x: coords.electionDate.x, y: coords.electionDate.y, size, font, color });
+
+                // Serialize
+                const pdfBytes = await pdfDoc.save();
+
+                // Download trigger
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `Proxy_${ownerName.replace(/\s+/g, '_')}.pdf`;
+                link.click();
+
+            } catch (err) {
+                alert("Error generating PDF: " + err.message);
+                console.error(err);
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
